@@ -1,0 +1,16 @@
+<h1>New student</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', students_path %>
+
+
+<script type="text/javascript">
+	$('#add-Another-hobby').click(function(e) {
+		var i = $("#hobby-List-Area").children('input').size();
+		
+		var content = "<br/><input type='text' size='30' name='student[hobbies_attributes]["+i+"][name]' id='student_hobbies_attributes_"+i+"_name'><br />"
+    $('#hobby-List-Area').append(content);
+     e.preventDefault();
+   });
+</script>

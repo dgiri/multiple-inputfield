@@ -1,0 +1,34 @@
+<%= form_for(@student) do |f| %>
+  <% if @student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% @student.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
+  </div>
+  <div class="field">
+    <%= f.label :roll %><br />
+    <%= f.number_field :roll %>
+  </div>
+	<div class="field" id="hobby-List-Area">
+		<label for="student_hobby">Hobbies</label><br />
+		<%= render :partial => "hobby_list", :locals => {:f => f} %>		
+	</div>
+	<%= link_to "Add another", "#", :id => "add-Another-hobby" %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
